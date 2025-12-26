@@ -16,4 +16,15 @@ class Airline(Base):
     Region = Column(String(100)) # Region (e.g., Europe, Asia)
    
 
+class Airport(Base):
+    """
+    Represents the Airline table in the database.
+    """
+    __tablename__ = "Airport" 
 
+    IATA = Column(String(3), primary_key=True) # e.g., "ATL for Atlanta" 
+    Airport_name = Column(String(100), nullable=False) # Airline name
+    City = Column(String(100)) # Country of origin 
+    Country = Column(String(100)) # Country of origin 
+    Region = Column(String(100)) # Region (e.g., Europe, Asia)
+   
