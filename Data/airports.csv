@@ -1,0 +1,99 @@
+City,Airport Name,IATA Code,Country,Region
+Atlanta,Hartsfield–Jackson Atlanta Intl,ATL,United States,North America
+Beijing,Beijing Capital Intl,PEK,China,Asia
+London,Heathrow Airport,LHR,United Kingdom,Europe
+Tokyo,Haneda Airport,HND,Japan,Asia
+Dubai,Dubai Intl,DXB,United Arab Emirates,Middle East
+Los Angeles,Los Angeles Intl,LAX,United States,North America
+Chicago,O'Hare Intl,ORD,United States,North America
+Paris,Charles de Gaulle,CDG,France,Europe
+Amsterdam,Schiphol Airport,AMS,Netherlands,Europe
+Hong Kong,Hong Kong Intl,HKG,Hong Kong,Asia
+Singapore,Changi Airport,SIN,Singapore,Asia
+Frankfurt,Frankfurt Airport,FRA,Germany,Europe
+Seoul,Incheon Intl,ICN,South Korea,Asia
+Istanbul,Istanbul Airport,IST,Türkiye,Europe/Asia
+Dallas–Fort Worth,DFW Intl,DFW,United States,North America
+Denver,Denver Intl,DEN,United States,North America
+Bangkok,Suvarnabhumi Airport,BKK,Thailand,Asia
+Madrid,Adolfo Suárez Madrid–Barajas,MAD,Spain,Europe
+Barcelona,Barcelona–El Prat,BCN,Spain,Europe
+Toronto,Toronto Pearson Intl,YYZ,Canada,North America
+Sydney,Kingsford Smith Airport,SYD,Australia,Oceania
+Melbourne,Melbourne Airport,MEL,Australia,Oceania
+São Paulo,Guarulhos Intl,GRU,Brazil,South America
+Mexico City,Mexico City Intl,MEX,Mexico,North America
+Doha,Hamad Intl,DOH,Qatar,Middle East
+Zurich,Zurich Airport,ZRH,Switzerland,Europe
+Vienna,Vienna Intl,VIE,Austria,Europe
+Rome,Leonardo da Vinci–Fiumicino,FCO,Italy,Europe
+Milan,Malpensa Airport,MXP,Italy,Europe
+Munich,Munich Airport,MUC,Germany,Europe
+Copenhagen,Copenhagen Airport,CPH,Denmark,Europe
+Stockholm,Arlanda Airport,ARN,Sweden,Europe
+Oslo,Gardermoen Airport,OSL,Norway,Europe
+Helsinki,Helsinki–Vantaa,HEL,Finland,Europe
+Brussels,Brussels Airport,BRU,Belgium,Europe
+Dublin,Dublin Airport,DUB,Ireland,Europe
+Lisbon,Humberto Delgado Airport,LIS,Portugal,Europe
+Athens,Athens Intl,ATH,Greece,Europe
+Warsaw,Chopin Airport,WAW,Poland,Europe
+Prague,Václav Havel Airport,PRG,Czech Republic,Europe
+Budapest,Budapest Ferenc Liszt Intl,BUD,Hungary,Europe
+Johannesburg,OR Tambo Intl,JNB,South Africa,Africa
+Cape Town,Cape Town Intl,CPT,South Africa,Africa
+Nairobi,Jomo Kenyatta Intl,NBO,Kenya,Africa
+Cairo,Cairo Intl,CAI,Egypt,Africa
+New Delhi,Indira Gandhi Intl,DEL,India,Asia
+Mumbai,Chhatrapati Shivaji Maharaj Intl,BOM,India,Asia
+Jakarta,Soekarno–Hatta Intl,CGK,Indonesia,Asia
+Manila,Ninoy Aquino Intl,MNL,Philippines,Asia
+Hanoi,Nội Bài Intl,HAN,Vietnam,Asia
+Ho Chi Minh City,Tan Son Nhat Intl,SGN,Vietnam,Asia
+Auckland,Auckland Intl,AKL,New Zealand,Oceania
+Wellington,Wellington Intl,WLG,New Zealand,Oceania
+Christchurch,Christchurch Intl,CHC,New Zealand,Oceania
+Lima,Jorge Chávez Intl,LIM,Peru,South America
+Bogotá,El Dorado Intl,BOG,Colombia,South America
+Santiago,Arturo Merino Benítez Intl,SCL,Chile,South America
+Buenos Aires,Ministro Pistarini Intl,EZE,Argentina,South America
+Rio de Janeiro,Galeão Intl,GIG,Brazil,South America
+Brasília,Brasília Intl,BSB,Brazil,South America
+Panama City,Tocumen Intl,PTY,Panama,North America
+San José,Juan Santamaría Intl,SJO,Costa Rica,North America
+San Salvador,El Salvador Intl,SAL,El Salvador,North America
+Guatemala City,La Aurora Intl,GUA,Guatemala,North America
+Kingston,Norman Manley Intl,KIN,Jamaica,Caribbean
+Montego Bay,Sangster Intl,MBJ,Jamaica,Caribbean
+Nassau,Lynden Pindling Intl,NAS,Bahamas,Caribbean
+Punta Cana,Punta Cana Intl,PUJ,Dominican Republic,Caribbean
+Santo Domingo,Las Américas Intl,SDQ,Dominican Republic,Caribbean
+Port of Spain,Piarco Intl,POS,Trinidad & Tobago,Caribbean
+Havana,José Martí Intl,HAV,Cuba,Caribbean
+Reykjavik,Keflavík Intl,KEF,Iceland,Europe
+Edinburgh,Edinburgh Airport,EDI,United Kingdom,Europe
+Manchester,Manchester Airport,MAN,United Kingdom,Europe
+Birmingham,Birmingham Airport,BHX,United Kingdom,Europe
+Glasgow,Glasgow Intl,GLA,United Kingdom,Europe
+Bristol,Bristol Airport,BRS,United Kingdom,Europe
+Leeds,Leeds Bradford Airport,LBA,United Kingdom,Europe
+Belfast,Belfast Intl,BFS,United Kingdom,Europe
+Liverpool,Liverpool John Lennon Airport,LPL,United Kingdom,Europe
+Newcastle,Newcastle Intl,NCL,United Kingdom,Europe
+Cardiff,Cardiff Airport,CWL,United Kingdom,Europe
+Geneva,Geneva Airport,GVA,Switzerland,Europe
+Basel,EuroAirport Basel–Mulhouse–Freiburg,BSL,Switzerland/France,Europe
+Nice,Nice Côte d’Azur,NCE,France,Europe
+Lyon,Lyon–Saint-Exupéry,LYS,France,Europe
+Marseille,Marseille Provence,MRS,France,Europe
+Toulouse,Toulouse–Blagnac,TLS,France,Europe
+Bordeaux,Bordeaux–Mérignac,BOD,France,Europe
+Nantes,Nantes Atlantique,NTE,France,Europe
+Hamburg,Hamburg Airport,HAM,Germany,Europe
+Berlin,Berlin Brandenburg,BER,Germany,Europe
+Düsseldorf,Düsseldorf Airport,DUS,Germany,Europe
+Stuttgart,Stuttgart Airport,STR,Germany,Europe
+Cologne,Cologne Bonn Airport,CGN,Germany,Europe
+Hannover,Hannover Airport,HAJ,Germany,Europe
+Nuremberg,Nuremberg Airport,NUE,Germany,Europe
+Leipzig,Leipzig/Halle Airport,LEJ,Germany,Europe
