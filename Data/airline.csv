@@ -1,0 +1,101 @@
+IATA,Airline,Country,Region
+AA,American Airlines,United States,North America
+DL,Delta Air Lines,United States,North America
+UA,United Airlines,United States,North America
+WN,Southwest Airlines,United States,North America
+AS,Alaska Airlines,United States,North America
+B6,JetBlue Airways,United States,North America
+NK,Spirit Airlines,United States,North America
+F9,Frontier Airlines,United States,North America
+AC,Air Canada,Canada,North America
+WS,WestJet,Canada,North America
+TS,Air Transat,Canada,North America
+AM,Aeroméxico,Mexico,North America
+Y4,Volaris,Mexico,North America
+VB,Viva Aerobus,Mexico,North America
+LA,LATAM Airlines,Chile,South America
+AR,Aerolíneas Argentinas,Argentina,South America
+G3,GOL Linhas Aéreas,Brazil,South America
+AD,Azul Brazilian Airlines,Brazil,South America
+H2,Sky Airline,Chile,South America
+JA,JetSMART,Chile,South America
+AV,Avianca,Colombia,South America
+OB,Boliviana de Aviación,Bolivia,South America
+BA,British Airways,United Kingdom,Europe
+VS,Virgin Atlantic,United Kingdom,Europe
+U2,easyJet,United Kingdom,Europe
+FR,Ryanair,Ireland,Europe
+EI,Aer Lingus,Ireland,Europe
+LH,Lufthansa,Germany,Europe
+EW,Eurowings,Germany,Europe
+LX,Swiss International Air Lines,Switzerland,Europe
+OS,Austrian Airlines,Austria,Europe
+KL,KLM Royal Dutch Airlines,Netherlands,Europe
+AF,Air France,France,Europe
+IB,Iberia,Spain,Europe
+VY,Vueling,Spain,Europe
+W6,Wizz Air,Hungary,Europe
+AY,Finnair,Finland,Europe
+SK,SAS Scandinavian Airlines,Denmark/Sweden/Norway,Europe
+TP,TAP Air Portugal,Portugal,Europe
+LO,LOT Polish Airlines,Poland,Europe
+TK,Turkish Airlines,Turkey,Europe
+PC,Pegasus Airlines,Turkey,Europe
+A3,Aegean Airlines,Greece,Europe
+JU,Air Serbia,Serbia,Europe
+RO,TAROM,Romania,Europe
+KM,Air Malta,Malta,Europe
+FI,Icelandair,Iceland,Europe
+BT,Air Baltic,Latvia,Europe
+QR,Qatar Airways,Qatar,Middle East
+EK,Emirates,United Arab Emirates,Middle East
+EY,Etihad Airways,United Arab Emirates,Middle East
+SV,Saudia,Saudi Arabia,Middle East
+WY,Oman Air,Oman,Middle East
+GF,Gulf Air,Bahrain,Middle East
+KU,Kuwait Airways,Kuwait,Middle East
+RJ,Royal Jordanian,Jordan,Middle East
+ME,Middle East Airlines,Lebanon,Middle East
+FZ,FlyDubai,United Arab Emirates,Middle East
+ET,Ethiopian Airlines,Ethiopia,Africa
+KQ,Kenya Airways,Kenya,Africa
+SA,South African Airways,South Africa,Africa
+MS,EgyptAir,Egypt,Africa
+AT,Royal Air Maroc,Morocco,Africa
+AH,Air Algérie,Algeria,Africa
+WB,RwandAir,Rwanda,Africa
+MK,Air Mauritius,Mauritius,Africa
+DT,TAAG Angola Airlines,Angola,Africa
+TU,Tunisair,Tunisia,Africa
+AI,Air India,India,Asia
+6E,IndiGo,India,Asia
+UK,Vistara,India,Asia
+SG,SpiceJet,India,Asia
+JL,Japan Airlines,Japan,Asia
+NH,All Nippon Airways,Japan,Asia
+KE,Korean Air,South Korea,Asia
+OZ,Asiana Airlines,South Korea,Asia
+CZ,China Southern Airlines,China,Asia
+MU,China Eastern Airlines,China,Asia
+CA,Air China,China,Asia
+HU,Hainan Airlines,China,Asia
+CX,Cathay Pacific,Hong Kong,Asia
+HX,Hong Kong Airlines,Hong Kong,Asia
+SQ,Singapore Airlines,Singapore,Asia
+TR,Scoot,Singapore,Asia
+MH,Malaysia Airlines,Malaysia,Asia
+GA,Garuda Indonesia,Indonesia,Asia
+JT,Lion Air,Indonesia,Asia
+TG,Thai Airways,Thailand,Asia
+VN,Vietnam Airlines,Vietnam,Asia
+QH,Bamboo Airways,Vietnam,Asia
+PR,Philippine Airlines,Philippines,Asia
+QF,Qantas,Australia,Oceania
+VA,Virgin Australia,Australia,Oceania
+NZ,Air New Zealand,New Zealand,Oceania
+FJ,Fiji Airways,Fiji,Oceania
+PX,Air Niugini,Papua New Guinea,Oceania
+KC,Air Astana,Kazakhstan,Asia
+HY,Uzbekistan Airways,Uzbekistan,Asia
+UL,SriLankan Airlines,Sri Lanka,Asia
+J2,Azerbaijan Airlines,Azerbaijan,Asia

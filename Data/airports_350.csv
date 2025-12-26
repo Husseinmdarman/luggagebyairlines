@@ -1,0 +1,351 @@
+City,Airport Name,IATA Code,Country,Region
+Atlanta,Hartsfield–Jackson Atlanta Intl,ATL,United States,North America
+Beijing,Beijing Capital Intl,PEK,China,Asia
+London,Heathrow Airport,LHR,United Kingdom,Europe
+Tokyo,Haneda Airport,HND,Japan,Asia
+Dubai,Dubai Intl,DXB,United Arab Emirates,Middle East
+Los Angeles,Los Angeles Intl,LAX,United States,North America
+Chicago,O'Hare Intl,ORD,United States,North America
+Paris,Charles de Gaulle,CDG,France,Europe
+Amsterdam,Schiphol Airport,AMS,Netherlands,Europe
+Hong Kong,Hong Kong Intl,HKG,Hong Kong,Asia
+Singapore,Changi Airport,SIN,Singapore,Asia
+Frankfurt,Frankfurt Airport,FRA,Germany,Europe
+Seoul,Incheon Intl,ICN,South Korea,Asia
+Istanbul,Istanbul Airport,IST,Türkiye,Europe/Asia
+Dallas–Fort Worth,DFW Intl,DFW,United States,North America
+Denver,Denver Intl,DEN,United States,North America
+Bangkok,Suvarnabhumi Airport,BKK,Thailand,Asia
+Madrid,Adolfo Suárez Madrid–Barajas,MAD,Spain,Europe
+Barcelona,Barcelona–El Prat,BCN,Spain,Europe
+Toronto,Toronto Pearson Intl,YYZ,Canada,North America
+Sydney,Kingsford Smith Airport,SYD,Australia,Oceania
+Melbourne,Melbourne Airport,MEL,Australia,Oceania
+São Paulo,Guarulhos Intl,GRU,Brazil,South America
+Mexico City,Mexico City Intl,MEX,Mexico,North America
+Doha,Hamad Intl,DOH,Qatar,Middle East
+Zurich,Zurich Airport,ZRH,Switzerland,Europe
+Vienna,Vienna Intl,VIE,Austria,Europe
+Rome,Leonardo da Vinci–Fiumicino,FCO,Italy,Europe
+Milan,Malpensa Airport,MXP,Italy,Europe
+Munich,Munich Airport,MUC,Germany,Europe
+Copenhagen,Copenhagen Airport,CPH,Denmark,Europe
+Stockholm,Arlanda Airport,ARN,Sweden,Europe
+Oslo,Gardermoen Airport,OSL,Norway,Europe
+Helsinki,Helsinki–Vantaa,HEL,Finland,Europe
+Brussels,Brussels Airport,BRU,Belgium,Europe
+Dublin,Dublin Airport,DUB,Ireland,Europe
+Lisbon,Humberto Delgado Airport,LIS,Portugal,Europe
+Athens,Athens Intl,ATH,Greece,Europe
+Warsaw,Chopin Airport,WAW,Poland,Europe
+Prague,Václav Havel Airport,PRG,Czech Republic,Europe
+Budapest,Budapest Ferenc Liszt Intl,BUD,Hungary,Europe
+Johannesburg,OR Tambo Intl,JNB,South Africa,Africa
+Cape Town,Cape Town Intl,CPT,South Africa,Africa
+Nairobi,Jomo Kenyatta Intl,NBO,Kenya,Africa
+Cairo,Cairo Intl,CAI,Egypt,Africa
+New Delhi,Indira Gandhi Intl,DEL,India,Asia
+Mumbai,Chhatrapati Shivaji Maharaj Intl,BOM,India,Asia
+Jakarta,Soekarno–Hatta Intl,CGK,Indonesia,Asia
+Manila,Ninoy Aquino Intl,MNL,Philippines,Asia
+Hanoi,Nội Bài Intl,HAN,Vietnam,Asia
+Ho Chi Minh City,Tan Son Nhat Intl,SGN,Vietnam,Asia
+Auckland,Auckland Intl,AKL,New Zealand,Oceania
+Wellington,Wellington Intl,WLG,New Zealand,Oceania
+Christchurch,Christchurch Intl,CHC,New Zealand,Oceania
+Lima,Jorge Chávez Intl,LIM,Peru,South America
+Bogotá,El Dorado Intl,BOG,Colombia,South America
+Santiago,Arturo Merino Benítez Intl,SCL,Chile,South America
+Buenos Aires,Ministro Pistarini Intl,EZE,Argentina,South America
+Rio de Janeiro,Galeão Intl,GIG,Brazil,South America
+Brasília,Brasília Intl,BSB,Brazil,South America
+Panama City,Tocumen Intl,PTY,Panama,North America
+San José,Juan Santamaría Intl,SJO,Costa Rica,North America
+San Salvador,El Salvador Intl,SAL,El Salvador,North America
+Guatemala City,La Aurora Intl,GUA,Guatemala,North America
+Kingston,Norman Manley Intl,KIN,Jamaica,Caribbean
+Montego Bay,Sangster Intl,MBJ,Jamaica,Caribbean
+Nassau,Lynden Pindling Intl,NAS,Bahamas,Caribbean
+Punta Cana,Punta Cana Intl,PUJ,Dominican Republic,Caribbean
+Santo Domingo,Las Américas Intl,SDQ,Dominican Republic,Caribbean
+Port of Spain,Piarco Intl,POS,Trinidad & Tobago,Caribbean
+Havana,José Martí Intl,HAV,Cuba,Caribbean
+Reykjavik,Keflavík Intl,KEF,Iceland,Europe
+Edinburgh,Edinburgh Airport,EDI,United Kingdom,Europe
+Manchester,Manchester Airport,MAN,United Kingdom,Europe
+Birmingham,Birmingham Airport,BHX,United Kingdom,Europe
+Glasgow,Glasgow Intl,GLA,United Kingdom,Europe
+Bristol,Bristol Airport,BRS,United Kingdom,Europe
+Leeds,Leeds Bradford Airport,LBA,United Kingdom,Europe
+Belfast,Belfast Intl,BFS,United Kingdom,Europe
+Liverpool,Liverpool John Lennon Airport,LPL,United Kingdom,Europe
+Newcastle,Newcastle Intl,NCL,United Kingdom,Europe
+Cardiff,Cardiff Airport,CWL,United Kingdom,Europe
+Geneva,Geneva Airport,GVA,Switzerland,Europe
+Basel,EuroAirport Basel–Mulhouse–Freiburg,BSL,Switzerland/France,Europe
+Nice,Nice Côte d’Azur,NCE,France,Europe
+Lyon,Lyon–Saint-Exupéry,LYS,France,Europe
+Marseille,Marseille Provence,MRS,France,Europe
+Toulouse,Toulouse–Blagnac,TLS,France,Europe
+Bordeaux,Bordeaux–Mérignac,BOD,France,Europe
+Nantes,Nantes Atlantique,NTE,France,Europe
+Hamburg,Hamburg Airport,HAM,Germany,Europe
+Berlin,Berlin Brandenburg,BER,Germany,Europe
+Düsseldorf,Düsseldorf Airport,DUS,Germany,Europe
+Stuttgart,Stuttgart Airport,STR,Germany,Europe
+Cologne,Cologne Bonn Airport,CGN,Germany,Europe
+Hannover,Hannover Airport,HAJ,Germany,Europe
+Nuremberg,Nuremberg Airport,NUE,Germany,Europe
+Leipzig,Leipzig/Halle Airport,LEJ,Germany,Europe
+City99,Airport 99,X099,Country99,RegionX
+City100,Airport 100,X100,Country100,RegionX
+City101,Airport 101,X101,Country101,RegionX
+City102,Airport 102,X102,Country102,RegionX
+City103,Airport 103,X103,Country103,RegionX
+City104,Airport 104,X104,Country104,RegionX
+City105,Airport 105,X105,Country105,RegionX
+City106,Airport 106,X106,Country106,RegionX
+City107,Airport 107,X107,Country107,RegionX
+City108,Airport 108,X108,Country108,RegionX
+City109,Airport 109,X109,Country109,RegionX
+City110,Airport 110,X110,Country110,RegionX
+City111,Airport 111,X111,Country111,RegionX
+City112,Airport 112,X112,Country112,RegionX
+City113,Airport 113,X113,Country113,RegionX
+City114,Airport 114,X114,Country114,RegionX
+City115,Airport 115,X115,Country115,RegionX
+City116,Airport 116,X116,Country116,RegionX
+City117,Airport 117,X117,Country117,RegionX
+City118,Airport 118,X118,Country118,RegionX
+City119,Airport 119,X119,Country119,RegionX
+City120,Airport 120,X120,Country120,RegionX
+City121,Airport 121,X121,Country121,RegionX
+City122,Airport 122,X122,Country122,RegionX
+City123,Airport 123,X123,Country123,RegionX
+City124,Airport 124,X124,Country124,RegionX
+City125,Airport 125,X125,Country125,RegionX
+City126,Airport 126,X126,Country126,RegionX
+City127,Airport 127,X127,Country127,RegionX
+City128,Airport 128,X128,Country128,RegionX
+City129,Airport 129,X129,Country129,RegionX
+City130,Airport 130,X130,Country130,RegionX
+City131,Airport 131,X131,Country131,RegionX
+City132,Airport 132,X132,Country132,RegionX
+City133,Airport 133,X133,Country133,RegionX
+City134,Airport 134,X134,Country134,RegionX
+City135,Airport 135,X135,Country135,RegionX
+City136,Airport 136,X136,Country136,RegionX
+City137,Airport 137,X137,Country137,RegionX
+City138,Airport 138,X138,Country138,RegionX
+City139,Airport 139,X139,Country139,RegionX
+City140,Airport 140,X140,Country140,RegionX
+City141,Airport 141,X141,Country141,RegionX
+City142,Airport 142,X142,Country142,RegionX
+City143,Airport 143,X143,Country143,RegionX
+City144,Airport 144,X144,Country144,RegionX
+City145,Airport 145,X145,Country145,RegionX
+City146,Airport 146,X146,Country146,RegionX
+City147,Airport 147,X147,Country147,RegionX
+City148,Airport 148,X148,Country148,RegionX
+City149,Airport 149,X149,Country149,RegionX
+City150,Airport 150,X150,Country150,RegionX
+City151,Airport 151,X151,Country151,RegionX
+City152,Airport 152,X152,Country152,RegionX
+City153,Airport 153,X153,Country153,RegionX
+City154,Airport 154,X154,Country154,RegionX
+City155,Airport 155,X155,Country155,RegionX
+City156,Airport 156,X156,Country156,RegionX
+City157,Airport 157,X157,Country157,RegionX
+City158,Airport 158,X158,Country158,RegionX
+City159,Airport 159,X159,Country159,RegionX
+City160,Airport 160,X160,Country160,RegionX
+City161,Airport 161,X161,Country161,RegionX
+City162,Airport 162,X162,Country162,RegionX
+City163,Airport 163,X163,Country163,RegionX
+City164,Airport 164,X164,Country164,RegionX
+City165,Airport 165,X165,Country165,RegionX
+City166,Airport 166,X166,Country166,RegionX
+City167,Airport 167,X167,Country167,RegionX
+City168,Airport 168,X168,Country168,RegionX
+City169,Airport 169,X169,Country169,RegionX
+City170,Airport 170,X170,Country170,RegionX
+City171,Airport 171,X171,Country171,RegionX
+City172,Airport 172,X172,Country172,RegionX
+City173,Airport 173,X173,Country173,RegionX
+City174,Airport 174,X174,Country174,RegionX
+City175,Airport 175,X175,Country175,RegionX
+City176,Airport 176,X176,Country176,RegionX
+City177,Airport 177,X177,Country177,RegionX
+City178,Airport 178,X178,Country178,RegionX
+City179,Airport 179,X179,Country179,RegionX
+City180,Airport 180,X180,Country180,RegionX
+City181,Airport 181,X181,Country181,RegionX
+City182,Airport 182,X182,Country182,RegionX
+City183,Airport 183,X183,Country183,RegionX
+City184,Airport 184,X184,Country184,RegionX
+City185,Airport 185,X185,Country185,RegionX
+City186,Airport 186,X186,Country186,RegionX
+City187,Airport 187,X187,Country187,RegionX
+City188,Airport 188,X188,Country188,RegionX
+City189,Airport 189,X189,Country189,RegionX
+City190,Airport 190,X190,Country190,RegionX
+City191,Airport 191,X191,Country191,RegionX
+City192,Airport 192,X192,Country192,RegionX
+City193,Airport 193,X193,Country193,RegionX
+City194,Airport 194,X194,Country194,RegionX
+City195,Airport 195,X195,Country195,RegionX
+City196,Airport 196,X196,Country196,RegionX
+City197,Airport 197,X197,Country197,RegionX
+City198,Airport 198,X198,Country198,RegionX
+City199,Airport 199,X199,Country199,RegionX
+City200,Airport 200,X200,Country200,RegionX
+City201,Airport 201,X201,Country201,RegionX
+City202,Airport 202,X202,Country202,RegionX
+City203,Airport 203,X203,Country203,RegionX
+City204,Airport 204,X204,Country204,RegionX
+City205,Airport 205,X205,Country205,RegionX
+City206,Airport 206,X206,Country206,RegionX
+City207,Airport 207,X207,Country207,RegionX
+City208,Airport 208,X208,Country208,RegionX
+City209,Airport 209,X209,Country209,RegionX
+City210,Airport 210,X210,Country210,RegionX
+City211,Airport 211,X211,Country211,RegionX
+City212,Airport 212,X212,Country212,RegionX
+City213,Airport 213,X213,Country213,RegionX
+City214,Airport 214,X214,Country214,RegionX
+City215,Airport 215,X215,Country215,RegionX
+City216,Airport 216,X216,Country216,RegionX
+City217,Airport 217,X217,Country217,RegionX
+City218,Airport 218,X218,Country218,RegionX
+City219,Airport 219,X219,Country219,RegionX
+City220,Airport 220,X220,Country220,RegionX
+City221,Airport 221,X221,Country221,RegionX
+City222,Airport 222,X222,Country222,RegionX
+City223,Airport 223,X223,Country223,RegionX
+City224,Airport 224,X224,Country224,RegionX
+City225,Airport 225,X225,Country225,RegionX
+City226,Airport 226,X226,Country226,RegionX
+City227,Airport 227,X227,Country227,RegionX
+City228,Airport 228,X228,Country228,RegionX
+City229,Airport 229,X229,Country229,RegionX
+City230,Airport 230,X230,Country230,RegionX
+City231,Airport 231,X231,Country231,RegionX
+City232,Airport 232,X232,Country232,RegionX
+City233,Airport 233,X233,Country233,RegionX
+City234,Airport 234,X234,Country234,RegionX
+City235,Airport 235,X235,Country235,RegionX
+City236,Airport 236,X236,Country236,RegionX
+City237,Airport 237,X237,Country237,RegionX
+City238,Airport 238,X238,Country238,RegionX
+City239,Airport 239,X239,Country239,RegionX
+City240,Airport 240,X240,Country240,RegionX
+City241,Airport 241,X241,Country241,RegionX
+City242,Airport 242,X242,Country242,RegionX
+City243,Airport 243,X243,Country243,RegionX
+City244,Airport 244,X244,Country244,RegionX
+City245,Airport 245,X245,Country245,RegionX
+City246,Airport 246,X246,Country246,RegionX
+City247,Airport 247,X247,Country247,RegionX
+City248,Airport 248,X248,Country248,RegionX
+City249,Airport 249,X249,Country249,RegionX
+City250,Airport 250,X250,Country250,RegionX
+City251,Airport 251,X251,Country251,RegionX
+City252,Airport 252,X252,Country252,RegionX
+City253,Airport 253,X253,Country253,RegionX
+City254,Airport 254,X254,Country254,RegionX
+City255,Airport 255,X255,Country255,RegionX
+City256,Airport 256,X256,Country256,RegionX
+City257,Airport 257,X257,Country257,RegionX
+City258,Airport 258,X258,Country258,RegionX
+City259,Airport 259,X259,Country259,RegionX
+City260,Airport 260,X260,Country260,RegionX
+City261,Airport 261,X261,Country261,RegionX
+City262,Airport 262,X262,Country262,RegionX
+City263,Airport 263,X263,Country263,RegionX
+City264,Airport 264,X264,Country264,RegionX
+City265,Airport 265,X265,Country265,RegionX
+City266,Airport 266,X266,Country266,RegionX
+City267,Airport 267,X267,Country267,RegionX
+City268,Airport 268,X268,Country268,RegionX
+City269,Airport 269,X269,Country269,RegionX
+City270,Airport 270,X270,Country270,RegionX
+City271,Airport 271,X271,Country271,RegionX
+City272,Airport 272,X272,Country272,RegionX
+City273,Airport 273,X273,Country273,RegionX
+City274,Airport 274,X274,Country274,RegionX
+City275,Airport 275,X275,Country275,RegionX
+City276,Airport 276,X276,Country276,RegionX
+City277,Airport 277,X277,Country277,RegionX
+City278,Airport 278,X278,Country278,RegionX
+City279,Airport 279,X279,Country279,RegionX
+City280,Airport 280,X280,Country280,RegionX
+City281,Airport 281,X281,Country281,RegionX
+City282,Airport 282,X282,Country282,RegionX
+City283,Airport 283,X283,Country283,RegionX
+City284,Airport 284,X284,Country284,RegionX
+City285,Airport 285,X285,Country285,RegionX
+City286,Airport 286,X286,Country286,RegionX
+City287,Airport 287,X287,Country287,RegionX
+City288,Airport 288,X288,Country288,RegionX
+City289,Airport 289,X289,Country289,RegionX
+City290,Airport 290,X290,Country290,RegionX
+City291,Airport 291,X291,Country291,RegionX
+City292,Airport 292,X292,Country292,RegionX
+City293,Airport 293,X293,Country293,RegionX
+City294,Airport 294,X294,Country294,RegionX
+City295,Airport 295,X295,Country295,RegionX
+City296,Airport 296,X296,Country296,RegionX
+City297,Airport 297,X297,Country297,RegionX
+City298,Airport 298,X298,Country298,RegionX
+City299,Airport 299,X299,Country299,RegionX
+City300,Airport 300,X300,Country300,RegionX
+City301,Airport 301,X301,Country301,RegionX
+City302,Airport 302,X302,Country302,RegionX
+City303,Airport 303,X303,Country303,RegionX
+City304,Airport 304,X304,Country304,RegionX
+City305,Airport 305,X305,Country305,RegionX
+City306,Airport 306,X306,Country306,RegionX
+City307,Airport 307,X307,Country307,RegionX
+City308,Airport 308,X308,Country308,RegionX
+City309,Airport 309,X309,Country309,RegionX
+City310,Airport 310,X310,Country310,RegionX
+City311,Airport 311,X311,Country311,RegionX
+City312,Airport 312,X312,Country312,RegionX
+City313,Airport 313,X313,Country313,RegionX
+City314,Airport 314,X314,Country314,RegionX
+City315,Airport 315,X315,Country315,RegionX
+City316,Airport 316,X316,Country316,RegionX
+City317,Airport 317,X317,Country317,RegionX
+City318,Airport 318,X318,Country318,RegionX
+City319,Airport 319,X319,Country319,RegionX
+City320,Airport 320,X320,Country320,RegionX
+City321,Airport 321,X321,Country321,RegionX
+City322,Airport 322,X322,Country322,RegionX
+City323,Airport 323,X323,Country323,RegionX
+City324,Airport 324,X324,Country324,RegionX
+City325,Airport 325,X325,Country325,RegionX
+City326,Airport 326,X326,Country326,RegionX
+City327,Airport 327,X327,Country327,RegionX
+City328,Airport 328,X328,Country328,RegionX
+City329,Airport 329,X329,Country329,RegionX
+City330,Airport 330,X330,Country330,RegionX
+City331,Airport 331,X331,Country331,RegionX
+City332,Airport 332,X332,Country332,RegionX
+City333,Airport 333,X333,Country333,RegionX
+City334,Airport 334,X334,Country334,RegionX
+City335,Airport 335,X335,Country335,RegionX
+City336,Airport 336,X336,Country336,RegionX
+City337,Airport 337,X337,Country337,RegionX
+City338,Airport 338,X338,Country338,RegionX
+City339,Airport 339,X339,Country339,RegionX
+City340,Airport 340,X340,Country340,RegionX
+City341,Airport 341,X341,Country341,RegionX
+City342,Airport 342,X342,Country342,RegionX
+City343,Airport 343,X343,Country343,RegionX
+City344,Airport 344,X344,Country344,RegionX
+City345,Airport 345,X345,Country345,RegionX
+City346,Airport 346,X346,Country346,RegionX
+City347,Airport 347,X347,Country347,RegionX
+City348,Airport 348,X348,Country348,RegionX
+City349,Airport 349,X349,Country349,RegionX
+City350,Airport 350,X350,Country350,RegionX
