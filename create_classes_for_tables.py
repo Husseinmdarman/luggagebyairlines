@@ -1,6 +1,8 @@
 
 from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import Column, Integer, String, ForeignKey, Date 
+from sqlalchemy import Column, Integer, String, ForeignKey, Date, UniqueConstraint 
+from sqlalchemy.orm import DeclarativeMeta
+from typing import Type
 
 Base = declarative_base()
 
@@ -17,6 +19,11 @@ class Passanger(Base):
     date_of_birth = Column(Date, nullable=False)
     email = Column(String(100), nullable=False) 
     phone_number = Column(String(50), nullable=False)
+
+    #due to the csv having no unique identifier other than a combination of columns, we create a unique constraint
+    __table_args__ = (
+                        UniqueConstraint('family_name', 'given_name', 'date_of_birth', name = "uq_passenger_identity"),
+                        )
 
 class CountryRegion(Base):
     """
@@ -56,3 +63,13 @@ class Airport(Base):
     country_region_id = Column(Integer, ForeignKey('CountryRegion.id'))
     country_region = relationship("CountryRegion", back_populates="airports")
    
+def get_unique_columns(model = Type[DeclarativeMeta]) -> List[str]: 
+    """ Returns a list of column names participating in a UniqueConstraint. If none exist, returns an empty list. """ 
+    
+    unique_cols = [] 
+    
+    for constraint in model.__table__.constraints: 
+        if isinstance(constraint, UniqueConstraint): 
+            unique_cols.extend([col.name for col in constraint.columns]) 
+
+        return unique_cols

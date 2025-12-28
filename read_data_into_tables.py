@@ -1,13 +1,28 @@
 from database_connection_utils import create_engine_from_creds
-from create_classes_for_tables import Airline, Airport, CountryRegion, Passanger,Base
+from create_classes_for_tables import Airline, Airport, CountryRegion, Passanger,Base, get_unique_columns
 from sqlalchemy.orm import DeclarativeMeta
 from typing import Iterable, Optional, Type
 from pathlib import Path
+from cleaning_data import clean_passenger_df
 import pandas as pd
 import os
 
 engine = create_engine_from_creds() 
 Base.metadata.create_all(engine)
+
+def build_key(df, cols): 
+    """
+    Builds a unique key by concatenating specified columns with a delimiter.
+    Args:
+        df (pd.DataFrame): The DataFrame containing the data.
+        cols (List[str]): List of column names to concatenate.
+    Returns:
+        pd.Series: A Series containing the concatenated keys.
+    """
+    if df.empty: 
+        return pd.Series(dtype=str) 
+        
+    return df[cols].astype(str).agg("|".join, axis=1)
 
 def process_folder(folder_path: str, desired_columns=None):
     """
@@ -24,6 +39,7 @@ def process_folder(folder_path: str, desired_columns=None):
         return
     
     for csv_file in csv_files:
+        
         loaded_dataframe = pd.read_csv(csv_file, usecols=desired_columns or None)
         yield loaded_dataframe
 
@@ -59,10 +75,34 @@ def load_df_sql(dataframe_to_upload: pd.DataFrame, Table_to_be_loaded: Type[Decl
     """
     #Primary Key column name
     primary_key_name = Table_to_be_loaded.__table__.primary_key.columns[0].name
+
     if primary_key_name in dataframe_to_upload.columns:
         existing = pd.read_sql(f'SELECT "{primary_key_name}" FROM "{Table_to_be_loaded.__tablename__}"', engine)
         dataframe_to_upload = dataframe_to_upload[~dataframe_to_upload[primary_key_name].isin(existing[primary_key_name])]
     
+    # Inspect model metadata, will return a empty list if there is no UniqueConstraint
+    unique_cols = get_unique_columns(Table_to_be_loaded)
+    if unique_cols:
+        cols_str = ", ".join(unique_cols)
+        print(cols_str)
+
+        existing = pd.read_sql( f'SELECT {cols_str} FROM "{Table_to_be_loaded.__tablename__}"', engine )
+        # Example: detect duplicates before insert 
+
+        dataframe_to_upload["__key__"] = build_key(dataframe_to_upload, unique_cols) 
+        existing["__key__"] = build_key(existing, unique_cols)
+        # dataframe_to_upload["__key__"] = dataframe_to_upload[unique_cols].astype(str).agg("|".join, axis=1) 
+        
+        print("Unique cols:", unique_cols) 
+        print("Existing columns:", existing.columns.tolist()) 
+        print("Selecting:", existing[unique_cols].head())
+        
+
+        # existing["__key__"] = existing[unique_cols].astype(str).agg("|".join, axis=1)
+
+        dataframe_to_upload = dataframe_to_upload[~dataframe_to_upload["__key__"].isin(existing["__key__"])]
+        dataframe_to_upload = dataframe_to_upload.drop(columns="__key__")
+
     # Insert data into the specified table
     dataframe_to_upload.to_sql(Table_to_be_loaded.__tablename__, engine, if_exists='append', index=False)
     print(f"Inserted {len(dataframe_to_upload)} records into the {Table_to_be_loaded.__tablename__} table.")
@@ -114,5 +154,6 @@ if __name__ == "__main__":
    load_df_sql(airlines_df, Airline)
 
    for passanger_df in process_folder("Data/Passenger details"):
-         load_df_sql(passanger_df, Passanger)
+        passanger_df = clean_passenger_df(passanger_df)
+        load_df_sql(passanger_df, Passanger)
     
