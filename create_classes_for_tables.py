@@ -1,8 +1,22 @@
 
 from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import Column, Integer, String, ForeignKey 
+from sqlalchemy import Column, Integer, String, ForeignKey, Date 
 
-Base = declarative_base()   
+Base = declarative_base()
+
+class Passanger(Base):
+    """
+    Represents the Passanger table in the database.
+    """
+    __tablename__ = "Passanger" 
+
+    PassangerID = Column(Integer, primary_key=True, autoincrement=True) 
+    family_name = Column(String(50), nullable=False) 
+    given_name = Column(String(50), nullable=False) 
+    gender = Column(String(20), nullable=False)
+    date_of_birth = Column(Date, nullable=False)
+    email = Column(String(100), nullable=False) 
+    phone_number = Column(String(50), nullable=False)
 
 class CountryRegion(Base):
     """

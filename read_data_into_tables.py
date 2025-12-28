@@ -1,12 +1,32 @@
 from database_connection_utils import create_engine_from_creds
-from create_classes_for_tables import Airline, Airport, CountryRegion, Base
+from create_classes_for_tables import Airline, Airport, CountryRegion, Passanger,Base
 from sqlalchemy.orm import DeclarativeMeta
 from typing import Iterable, Optional, Type
+from pathlib import Path
 import pandas as pd
 import os
 
 engine = create_engine_from_creds() 
 Base.metadata.create_all(engine)
+
+def process_folder(folder_path: str, desired_columns=None):
+    """
+    Processes all CSV files in a specified folder.
+    Args:
+        folder_path (str): The path to the folder containing CSV files.
+    """
+
+    folder = Path(folder_path)
+    csv_files = sorted(folder.glob("*.csv")) 
+    
+    if not csv_files: 
+        print("No CSV files found.") 
+        return
+    
+    for csv_file in csv_files:
+        loaded_dataframe = pd.read_csv(csv_file, usecols=desired_columns or None)
+        yield loaded_dataframe
+
 
 def read_csv_data_into_dataframe(csv_file_path: str, desired_columns: Optional[Iterable[str]] = None ):
     """
@@ -39,9 +59,10 @@ def load_df_sql(dataframe_to_upload: pd.DataFrame, Table_to_be_loaded: Type[Decl
     """
     #Primary Key column name
     primary_key_name = Table_to_be_loaded.__table__.primary_key.columns[0].name
+    if primary_key_name in dataframe_to_upload.columns:
+        existing = pd.read_sql(f'SELECT "{primary_key_name}" FROM "{Table_to_be_loaded.__tablename__}"', engine)
+        dataframe_to_upload = dataframe_to_upload[~dataframe_to_upload[primary_key_name].isin(existing[primary_key_name])]
     
-    existing = pd.read_sql(f'SELECT "{primary_key_name}" FROM "{Table_to_be_loaded.__tablename__}"', engine)
-    dataframe_to_upload = dataframe_to_upload[~dataframe_to_upload[primary_key_name].isin(existing[primary_key_name])]
     # Insert data into the specified table
     dataframe_to_upload.to_sql(Table_to_be_loaded.__tablename__, engine, if_exists='append', index=False)
     print(f"Inserted {len(dataframe_to_upload)} records into the {Table_to_be_loaded.__tablename__} table.")
@@ -88,7 +109,10 @@ if __name__ == "__main__":
    
    airports_df, airlines_df= create_countryregion_table("Data/airline.csv","Data/airports.csv", CountryRegion)
    airports_df.rename(columns={"Airport Name": "Airport_name", "IATA Code": "IATA"}, inplace=True)
-   print(airports_df.head(10)) 
+   
    load_df_sql(airports_df, Airport)
    load_df_sql(airlines_df, Airline)
-   
+
+   for passanger_df in process_folder("Data/Passenger details"):
+         load_df_sql(passanger_df, Passanger)
+    
