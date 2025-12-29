@@ -20,7 +20,7 @@ def build_key(df, cols):
         pd.Series: A Series containing the concatenated keys.
     """
     if df.empty: 
-        return pd.Series(dtype=str) 
+        return pd.Series(dtype=str)  
         
     return df[cols].astype(str).agg("|".join, axis=1)
 
@@ -78,10 +78,13 @@ def load_df_sql(dataframe_to_upload: pd.DataFrame, Table_to_be_loaded: Type[Decl
 
     if primary_key_name in dataframe_to_upload.columns:
         existing = pd.read_sql(f'SELECT "{primary_key_name}" FROM "{Table_to_be_loaded.__tablename__}"', engine)
-        dataframe_to_upload = dataframe_to_upload[~dataframe_to_upload[primary_key_name].isin(existing[primary_key_name])]
+        
+        #creates a boolean mask to check for conflicts and only leaves new rows in the dataframe
+        dataframe_to_upload = dataframe_to_upload[~dataframe_to_upload[primary_key_name].isin(existing[primary_key_name])] 
     
     # Inspect model metadata, will return a empty list if there is no UniqueConstraint
     unique_cols = get_unique_columns(Table_to_be_loaded)
+    
     if unique_cols:
         cols_str = ", ".join(unique_cols)
         print(cols_str)
@@ -91,14 +94,6 @@ def load_df_sql(dataframe_to_upload: pd.DataFrame, Table_to_be_loaded: Type[Decl
 
         dataframe_to_upload["__key__"] = build_key(dataframe_to_upload, unique_cols) 
         existing["__key__"] = build_key(existing, unique_cols)
-        # dataframe_to_upload["__key__"] = dataframe_to_upload[unique_cols].astype(str).agg("|".join, axis=1) 
-        
-        print("Unique cols:", unique_cols) 
-        print("Existing columns:", existing.columns.tolist()) 
-        print("Selecting:", existing[unique_cols].head())
-        
-
-        # existing["__key__"] = existing[unique_cols].astype(str).agg("|".join, axis=1)
 
         dataframe_to_upload = dataframe_to_upload[~dataframe_to_upload["__key__"].isin(existing["__key__"])]
         dataframe_to_upload = dataframe_to_upload.drop(columns="__key__")
@@ -113,6 +108,7 @@ def create_countryregion_table(airline_csv_file_path: str,airport_csv_file_path:
     airports_df = read_csv_data_into_dataframe(airport_csv_file_path, desired_columns=["IATA Code", "Airport Name", "City", "Country", "Region"])
     
     #Extract unique combinations of country and region from dataframe
+    # concatenate the country and region columns from both dataframes, drop duplicates, and reset the index
     country_region_df = ( 
         pd.concat([ 
             airlines_df[['Country', 'Region']], 
@@ -123,7 +119,8 @@ def create_countryregion_table(airline_csv_file_path: str,airport_csv_file_path:
     
     
     # Insert data into the CountryRegion table
-    existing = pd.read_sql('SELECT "Country" FROM "CountryRegion"', engine) 
+    existing = pd.read_sql('SELECT "Country" FROM "CountryRegion"', engine)
+     
     country_region_df = country_region_df[~country_region_df["Country"].isin(existing["Country"])]
 
     country_region_df.to_sql(Table_to_be_loaded.__tablename__, engine, if_exists='append', index=False)

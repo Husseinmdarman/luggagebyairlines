@@ -50,6 +50,9 @@ class Airline(Base):
     
     country_region_id = Column(Integer, ForeignKey('CountryRegion.id'))
     country_region = relationship("CountryRegion", back_populates="airlines")
+    
+    # Reverse relationship to Flight_Details
+    flights =  relationship("Flight_Details", back_populates="airline")
 
 class Airport(Base):
     """
@@ -62,6 +65,53 @@ class Airport(Base):
     City = Column(String(100)) # Country of origin 
     country_region_id = Column(Integer, ForeignKey('CountryRegion.id'))
     country_region = relationship("CountryRegion", back_populates="airports")
+
+    # Reverse relationship to Flight_Details
+    departing_flights = relationship(
+        "Flight_Details", 
+        back_populates = "departure_airport",
+        foreign_keys = "Flight_Details.Departure_IATA" 
+    )
+    arriving_flights = relationship(
+        "Flight_Details",
+        back_populates = "arrival_airport",
+        foreign_keys = "Flight_Details.Arrival_IATA"
+    )
+    
+
+class Flight_Details(Base):
+    """
+    Represents the Flight_Details table in the database.
+    """
+    __tablename__ = "Flight_Details"
+
+    flight_number = Column(String(10), primary_key=True)
+
+    # Foreign keys 
+    Departure_IATA = Column(String(3), ForeignKey("Airport.IATA"), nullable=False) 
+    Arrival_IATA = Column(String(3), ForeignKey("Airport.IATA"), nullable=False) 
+    Airline_IATA = Column(String(2), ForeignKey("Airline.IATA"), nullable=False)
+
+    flight_date = Column(Date, nullable=False)  
+
+    # Forward Relationship to Airport
+    departure_airport = relationship(
+        "Airport",
+        foreign_keys = [Departure_IATA],
+        back_populates = "departing_flights"
+    )
+    arrival_airport = relationship(
+        "Airport",
+        foreign_keys = [Arrival_IATA],
+        back_populates = "arriving_flights"
+    )
+    # Forward Relationship to Airline
+    airline = relationship(
+        "Airline",
+        foreign_keys= [Airline_IATA],
+        back_populates="flights"
+    )
+    
    
 def get_unique_columns(model = Type[DeclarativeMeta]) -> List[str]: 
     """ Returns a list of column names participating in a UniqueConstraint. If none exist, returns an empty list. """ 
@@ -69,7 +119,7 @@ def get_unique_columns(model = Type[DeclarativeMeta]) -> List[str]:
     unique_cols = [] 
     
     for constraint in model.__table__.constraints: 
-        if isinstance(constraint, UniqueConstraint): 
-            unique_cols.extend([col.name for col in constraint.columns]) 
+        if isinstance(constraint, UniqueConstraint):  # checks if constraint is a uniqueconstraint
+            unique_cols.extend([col.name for col in constraint.columns])  # add column names to the list
 
         return unique_cols
