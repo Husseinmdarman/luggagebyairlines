@@ -1,8 +1,9 @@
 
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.orm import declarative_base, relationship, DeclarativeMeta
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, UniqueConstraint, CheckConstraint, Time
-from sqlalchemy.orm import DeclarativeMeta
+from sqlalchemy import Enum as SAEnum
 from typing import Type
+from pir_type import PIRType
 
 Base = declarative_base()
 
@@ -26,7 +27,7 @@ class FactPIR(Base):
     # PIR details
     pir_date = Column(Date, nullable=False)  # Date of the PIR event
     pir_time = Column(Time, nullable=False)  # Time of the PIR event
-    pir_type = Column(String(20), nullable=False)  # Type of PIR (e.g., delayed, lost, damaged)
+    pir_type = Column(SAEnum(PIRType, name="pir_type_enum"), nullable=False ) # Type of PIR (e.g., delayed, lost, damaged)
 
     # Relationships
     bag = relationship("BookedLuggage", back_populates = "pir_reports")  # Relationship to BookedLuggage
