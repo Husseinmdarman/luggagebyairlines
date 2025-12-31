@@ -60,4 +60,4 @@ def write_passangers_to_csv(n, chunk_size=50000, path="passengers.csv"):
         first = False
 
 if __name__ == "__main__":
-    write_passangers_to_csv(20000)  # Generate 20k passenger records
+    write_passangers_to_csv(20000, path = "Data/Passenger details/passengers.csv")  # Generate 20k passenger records
