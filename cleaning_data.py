@@ -7,3 +7,6 @@ def clean_passenger_df(df: DataFrame) -> pd.DataFrame:
     df["email"] = df["email"].str.replace(" ", "").str.lower() 
     
     return df
+
+def hello(strin: str = "hello"):
+    return strin
