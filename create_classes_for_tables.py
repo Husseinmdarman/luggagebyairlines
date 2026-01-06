@@ -103,7 +103,7 @@ class Passanger(Base):
 
     #due to the csv having no unique identifier other than a combination of columns, we create a unique constraint
     __table_args__ = (
-                        UniqueConstraint('family_name', 'given_name', 'date_of_birth', name = "uq_passanger_identity"),
+                        UniqueConstraint('family_name', 'given_name',"gender" ,'date_of_birth', "email", name = "uq_passanger_identity"),
                         )
 
 class CountryRegion(Base):
