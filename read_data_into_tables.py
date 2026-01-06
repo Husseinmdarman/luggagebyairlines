@@ -1,6 +1,8 @@
 from database_connection_utils import create_engine_from_creds
 from create_classes_for_tables import Airline, Airport, CountryRegion, Passanger,Flight_Details,Base, get_unique_columns
-from sqlalchemy.orm import DeclarativeMeta
+from sqlalchemy import UniqueConstraint
+from sqlalchemy.orm import DeclarativeMeta, Session
+from sqlalchemy.dialects.postgresql import insert
 from typing import Iterable, Optional, Type
 from pathlib import Path
 from cleaning_data import clean_passenger_df
@@ -99,8 +101,25 @@ def load_df_sql(dataframe_to_upload: pd.DataFrame, Table_to_be_loaded: Type[Decl
         dataframe_to_upload = dataframe_to_upload.drop(columns="__key__")
 
     # Insert data into the specified table
-    dataframe_to_upload.to_sql(Table_to_be_loaded.__tablename__, engine, if_exists='append', index=False)
-    print(f"Inserted {len(dataframe_to_upload)} records into the {Table_to_be_loaded.__tablename__} table.")
+    unique_constraints = [ 
+        c for c in Table_to_be_loaded.__table__.constraints 
+        if isinstance(c, UniqueConstraint) 
+        ]  # checks for unique constraints in the table definition
+
+    uc = unique_constraints[0] if unique_constraints else None  # Get the first unique constraint if it exists
+    
+    constraint_name = uc.name if uc else None  # Get the name of the unique constraint if it exists
+    
+    with Session(engine) as session:  # Create a new session
+        for row in dataframe_to_upload.to_dict(orient="records"): # Iterate over each row in the DataFrame 
+            stmt = insert(Table_to_be_loaded).values(**row) # Create an insert statement for the row
+            
+            if constraint_name: # If a unique constraint exists, handle conflicts
+                stmt = stmt.on_conflict_do_nothing( constraint=constraint_name ) # Do nothing on conflict based on the unique constraint
+                
+            session.execute(stmt)  # Execute the statement within the session
+                
+            session.commit() # Commit the transaction
 
 def create_countryregion_table(airline_csv_file_path: str,airport_csv_file_path: str,Table_to_be_loaded: Type[DeclarativeMeta]):
     
@@ -156,4 +175,7 @@ if __name__ == "__main__":
         load_df_sql(passanger_df, Passanger)
         
    for flight_details_df in process_folder("Data/flights_details"):
+        print(flight_details_df)
+        print(f"flight_details_df columns: {flight_details_df.columns.tolist()}")
         load_df_sql(flight_details_df, Flight_Details)    
+        print("flight details loaded")

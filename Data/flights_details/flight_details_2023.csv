@@ -1,4 +1,4 @@
-flightnumber,DepartureIATA,ArrivalIATA,AirlineIATA,flightdate
+flight_number,Departure_IATA,Arrival_IATA,Airline_IATA,flight_date
 KM287854,EZE,CGK,KM,2023-01-01
 MH719056,DXB,JNB,MH,2023-01-01
 B6779869,SJO,HAM,B6,2023-01-01

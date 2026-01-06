@@ -138,11 +138,11 @@ class FlightDetailsGenerator:
         dates = pd.Series(dates)
 
         return pd.DataFrame({ 
-            "flightnumber": flight_numbers, 
-            "DepartureIATA": departure_airport, 
-            "ArrivalIATA": arrival_airport, 
-            "AirlineIATA": airline_choices, 
-            "flightdate": dates.dt.strftime("%Y-%m-%d") 
+            "flight_number": flight_numbers, 
+            "Departure_IATA": departure_airport, 
+            "Arrival_IATA": arrival_airport, 
+            "Airline_IATA": airline_choices, 
+            "flight_date": dates.dt.strftime("%Y-%m-%d") 
             })
 
     #  Public method to generate full data set
@@ -168,5 +168,5 @@ class FlightDetailsGenerator:
 
 gen = FlightDetailsGenerator( "Data/airline.csv", "Data/airports.csv", 2023, flights_per_quarter=2000 ) 
 df = gen.generate() 
-df = df.sort_values(by=["flightdate"], ascending=True).reset_index(drop=True)
+df = df.sort_values(by=["flight_date"], ascending=True).reset_index(drop=True)
 df.to_csv("Data/flights_details/flight_details_2023.csv", index=False)
