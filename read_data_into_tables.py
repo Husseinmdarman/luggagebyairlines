@@ -152,5 +152,6 @@ if __name__ == "__main__":
 
    for passanger_df in process_folder("Data/Passenger details"):
         passanger_df = clean_passenger_df(passanger_df)
+        print(f"passanger_date_of_birth datatype: {passanger_df['date_of_birth'].dtype}")
         load_df_sql(passanger_df, Passanger)
     

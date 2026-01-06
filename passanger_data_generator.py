@@ -2,6 +2,8 @@ from faker import Faker
 import random
 from datetime import date, timedelta
 import pandas as pd
+import os
+
 
 fake = Faker()
 
@@ -42,7 +44,7 @@ def passanger_generator(num_passangers: int):
 def write_passangers_to_csv(n, chunk_size=50000, path="passengers.csv"): 
     
     gen = passanger_generator(n) 
-    first = True 
+    first = not os.path.exists(path)
     
     while True: 
         chunk = [] 
