@@ -1,5 +1,5 @@
 from database_connection_utils import create_engine_from_creds
-from create_classes_for_tables import Airline, Airport, CountryRegion, Passanger,Base, get_unique_columns
+from create_classes_for_tables import Airline, Airport, CountryRegion, Passanger,Flight_Details,Base, get_unique_columns
 from sqlalchemy.orm import DeclarativeMeta
 from typing import Iterable, Optional, Type
 from pathlib import Path
@@ -154,4 +154,6 @@ if __name__ == "__main__":
         passanger_df = clean_passenger_df(passanger_df)
         print(f"passanger_date_of_birth datatype: {passanger_df['date_of_birth'].dtype}")
         load_df_sql(passanger_df, Passanger)
-    
+        
+   for flight_details_df in process_folder("Data/flights_details"):
+        load_df_sql(flight_details_df, Flight_Details)    
