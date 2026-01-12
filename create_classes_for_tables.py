@@ -48,8 +48,8 @@ class BookedFlight(Base):
     
 
     # Relationships
-    passenger = relationship("Passanger", backref="booked_flights") #   Relationship to Passanger
-    flight_details = relationship("Flight_Details", backref="booked_flights") # Relationship to Flight_Details
+    passenger = relationship("Passanger", back_populates="booked_flights") #   Relationship to Passanger
+    flight_details = relationship("Flight_Details", back_populates="booked_flights") # Relationship to Flight_Details
     luggages = relationship("BookedLuggage", back_populates="booked_flight") # Relationship to BookedLuggage
     pir_reports = relationship("FactPIR", back_populates="booked_flight")  # Relationship to FactPIR
     
@@ -72,7 +72,7 @@ class BookedLuggage(Base):
     dimensions_cm = Column(String(50), nullable=False)  # e.g., "55x40x20" 
 
     # Relationships
-    passenger = relationship("Passanger", backref="luggages") # Relationship to Passanger
+    passenger = relationship("Passanger", back_populates="luggages") # Relationship to Passanger
     booked_flight = relationship("BookedFlight", back_populates="luggages") # Relationship to BookedFlight
     pir_reports = relationship("FactPIR", back_populates="bag")  # Relationship to FactPIR
 
