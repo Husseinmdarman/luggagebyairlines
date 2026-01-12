@@ -1,9 +1,10 @@
-from sqlalchemy import create_engine, insert
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session
 from create_classes_for_tables import Flight_Details, Passanger, BookedFlight
+from collections import defaultdict
 import pandas as pd
 import yaml  
+import random
 
 class BookFlightGenerator:
     """
@@ -66,31 +67,97 @@ class BookFlightGenerator:
 
     def _assign_flights(self, max_capacity: int = 20) -> pd.DataFrame:
         """
-        Assigns passengers to flights randomly, ensuring no flight exceeds its maximum capacity.
-        Args:
-            max_capacity (int): Maximum number of passengers per flight.
-        Returns:
-            pd.DataFrame: DataFrame containing booked flight records.
+        Assign passengers to flights with the following rules:
+        - Every flight must have at least one passenger.
+        - A passenger may appear on multiple flights.
+        - A passenger cannot appear on two flights occurring on the same flight_date.
+        - No flight exceeds max_capacity.
         """
 
-        flights = self.flight_details_df["flight_number"].tolist()
-        total_capacity = len(flights) * max_capacity
-        num_passengers = len(self.passanger_df)
+        # Extract flight info
+        flights_df = self.flight_details_df.copy()
+        passengers_df = self.passanger_df.copy()
 
-        if num_passengers > total_capacity: 
-            raise ValueError("All flights are full")
+        # Convert to lists for easier handling
+        passengers = passengers_df["passangerID"].tolist()
+        random.shuffle(passengers)  # randomize passenger order
 
-        assingment_pool = (
-            self.flight_details_df["flight_number"].repeat(max_capacity).tolist()
+        # Group flights by date → {date: [flight1, flight2, ...]}
+        flights_by_date = (
+            flights_df.groupby("flight_date")["flight_number"]
+            .apply(list)
+            .to_dict()
         )
 
-        self.passanger_df["flight_number"] = assingment_pool[:num_passengers]
+        # Track which passengers are already booked on each date
+        # Example: booked_on_date["2025-01-01"] = {12, 44, 91}
+        booked_on_date = defaultdict(set)
+
+        # Store final assignments as list of tuples
+        assignments = []
+
+        # ---------------------------------------------------------
+        # STEP 1 — Guarantee each flight gets at least one passenger
+        # ---------------------------------------------------------
+        for date, flights in flights_by_date.items():
+
+            for flight in flights:
+
+                # Find the first passenger NOT booked on this date
+                assigned = False
+                for p in passengers:
+                    if p not in booked_on_date[date]:
+                        assignments.append((p, flight, date))
+                        booked_on_date[date].add(p)
+                        assigned = True
+                        break
+
+                if not assigned:
+                    raise ValueError(
+                        f"No available passengers for date {date}. "
+                        "Not enough unique passengers to guarantee one per flight."
+                    )
+
+        # ---------------------------------------------------------
+        # STEP 2 — Fill remaining seats up to max_capacity
+        # ---------------------------------------------------------
+        for date, flights in flights_by_date.items():
+
+            for flight in flights:
+
+                # Count how many passengers already assigned to this flight
+                current_count = sum(1 for p, f, d in assignments if f == flight)
+                remaining_capacity = max_capacity - current_count
+
+                if remaining_capacity <= 0:
+                    continue  # flight is full
+
+                # Passengers who are NOT booked on this date
+                available_passengers = [
+                    p for p in passengers if p not in booked_on_date[date]
+                ]
+                random.shuffle(available_passengers)
+
+                # Assign up to remaining capacity
+                for p in available_passengers[:remaining_capacity]:
+                    assignments.append((p, flight, date))
+                    booked_on_date[date].add(p)
+
+        # ---------------------------------------------------------
+        # STEP 3 — Convert assignments to DataFrame
+        # ---------------------------------------------------------
+        self.passanger_df = pd.DataFrame(
+            assignments,
+            columns=["passangerID", "flight_number", "flight_date"]
+        )
+
+
 
     def generate_booked_flights(self):
 
         self._assign_flights()
 
-        booked_flight_df = self.passanger_df[["passangerID", "flight_number"]]
+        booked_flight_df = self.passanger_df[["passangerID", "flight_number", "flight_date"]]
 
         return booked_flight_df
 

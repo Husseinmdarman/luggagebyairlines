@@ -43,9 +43,9 @@ class BookedFlight(Base):
     __tablename__ = "BookedFlight" 
 
     ID = Column(Integer, primary_key=True, autoincrement=True) # Unique identifier for each booked flight
-    passangerID = Column(Integer, ForeignKey('Passanger.passangerID'), nullable=False, unique = True)  # Foreign key to Passanger 
+    passangerID = Column(Integer, ForeignKey('Passanger.passangerID'), nullable=False)  # Foreign key to Passanger 
     flight_number = Column(String(10), ForeignKey('Flight_Details.flight_number'), nullable=False)  # Foreign key to Flight_Details
-    
+    flight_date = Column(Date, nullable=False) # Date of the flight
 
     # Relationships
     passenger = relationship("Passanger", back_populates="booked_flights") #   Relationship to Passanger
@@ -54,8 +54,7 @@ class BookedFlight(Base):
     pir_reports = relationship("FactPIR", back_populates="booked_flight")  # Relationship to FactPIR
     
     __table_args__  = (
-        UniqueConstraint("passangerID", "flight_number", name="uq_passenger_flight"), # Ensures a passenger cannot book the same flight multiple times
-        UniqueConstraint("passangerID", name="uq_passenger_one_flight"), # Ensures a passenger can only have one booked flight at a time
+        UniqueConstraint("passangerID", "flight_number", "flight_date", name="uq_passenger_flight_date"), # Ensures a passenger cannot book the same flight multiple times
     )
 
 class BookedLuggage(Base):

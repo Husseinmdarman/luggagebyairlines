@@ -164,25 +164,26 @@ def create_countryregion_table(airline_csv_file_path: str,airport_csv_file_path:
 
 if __name__ == "__main__":
    
-#    airports_df, airlines_df= create_countryregion_table("Data/airline.csv","Data/airports.csv", CountryRegion)
-#    airports_df.rename(columns={"Airport Name": "Airport_name", "IATA Code": "IATA"}, inplace=True)
+    # airports_df, airlines_df= create_countryregion_table("Data/airline.csv","Data/airports.csv", CountryRegion)
+    # airports_df.rename(columns={"Airport Name": "Airport_name", "IATA Code": "IATA"}, inplace=True)
    
-#    load_df_sql(airports_df, Airport)
-#    load_df_sql(airlines_df, Airline)
+    # load_df_sql(airports_df, Airport)
+    # load_df_sql(airlines_df, Airline)
 
-#    for passanger_df in process_folder("Data/Passenger details"):
-#         passanger_df = clean_passenger_df(passanger_df)
-#         print(f"passanger_date_of_birth datatype: {passanger_df['date_of_birth'].dtype}")
-#         load_df_sql(passanger_df, Passanger)
+    # for passanger_df in process_folder("Data/Passenger details"):
+    #     passanger_df = clean_passenger_df(passanger_df)
+    #     print(f"passanger_date_of_birth datatype: {passanger_df['date_of_birth'].dtype}")
+    #     load_df_sql(passanger_df, Passanger)
         
-#    for flight_details_df in process_folder("Data/flights_details"):
-#         print(flight_details_df)
-#         print(f"flight_details_df columns: {flight_details_df.columns.tolist()}")
-#         load_df_sql(flight_details_df, Flight_Details)    
-#         print("flight details loaded")
+    # for flight_details_df in process_folder("Data/flights_details"):
+    #     print(flight_details_df)
+    #     print(f"flight_details_df columns: {flight_details_df.columns.tolist()}")
+    #     load_df_sql(flight_details_df, Flight_Details)    
+    #     print("flight details loaded")
 
     booking_flights_for_passangers = BookFlightGenerator(engine)
     booking_flights_for_passangers.load_flight_details_from_db("Flight_Details")
     booking_flights_for_passangers.load_passengers_from_db("Passanger")
     booked_flights_df = booking_flights_for_passangers.generate_booked_flights()
     load_df_sql(booked_flights_df, BookedFlight)
+    print("booked flight details loaded")
