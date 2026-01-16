@@ -54,7 +54,7 @@ class BookedFlight(Base):
     pir_reports = relationship("FactPIR", back_populates="booked_flight")  # Relationship to FactPIR
     
     __table_args__  = (
-        UniqueConstraint("passangerID", "flight_number", "flight_date", name="uq_passenger_flight_date"), # Ensures a passenger cannot book the same flight multiple times
+        UniqueConstraint("passangerID", "flight_date", name="uq_passenger_flight_date"), # Ensures a passenger cannot book the same flight multiple times
     )
 
 class BookedLuggage(Base):
