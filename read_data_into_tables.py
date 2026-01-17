@@ -1,5 +1,5 @@
 from database_connection_utils import create_engine_from_creds
-from create_classes_for_tables import Airline, Airport,BookedFlight ,CountryRegion, Passanger,Flight_Details,Base, get_unique_columns
+from create_classes_for_tables import Airline, Airport,BookedFlight, BookedLuggage ,CountryRegion, Passanger,Flight_Details,Base, get_unique_columns
 from sqlalchemy import UniqueConstraint
 from sqlalchemy.orm import DeclarativeMeta, Session
 from sqlalchemy.dialects.postgresql import insert
@@ -7,6 +7,7 @@ from typing import Iterable, Optional, Type
 from pathlib import Path
 from cleaning_data import clean_passenger_df
 from booked_flights_generator import BookFlightGenerator
+from booked_luggage_generator import BookedLuggageGenerator
 import pandas as pd
 import os
 
@@ -67,7 +68,7 @@ def read_csv_data_into_dataframe(csv_file_path: str, desired_columns: Optional[I
     return loaded_dataframe
 
     
-def load_df_sql(dataframe_to_upload: pd.DataFrame, Table_to_be_loaded: Type[DeclarativeMeta]):
+def load_df_sql(dataframe_to_upload: pd.DataFrame, Table_to_be_loaded: Type[DeclarativeMeta], chunk_size: int | None = None) -> None:
     """
     Loads a dataframe into a SQL table.
     Args:
@@ -111,16 +112,35 @@ def load_df_sql(dataframe_to_upload: pd.DataFrame, Table_to_be_loaded: Type[Decl
     
     constraint_name = uc.name if uc else None  # Get the name of the unique constraint if it exists
     
+
     with Session(engine) as session:  # Create a new session
-        for row in dataframe_to_upload.to_dict(orient="records"): # Iterate over each row in the DataFrame 
-            stmt = insert(Table_to_be_loaded).values(**row) # Create an insert statement for the row
+
+        if chunk_size:
+
+            records  = dataframe_to_upload.to_dict(orient="records")  # Convert DataFrame to list of dictionaries
+        
+            for i in range(0, len(records), chunk_size):  # Process in chunks
+                chunk = records[i:i + chunk_size]  # Get the current chunk
             
-            if constraint_name: # If a unique constraint exists, handle conflicts
-                stmt = stmt.on_conflict_do_nothing( constraint=constraint_name ) # Do nothing on conflict based on the unique constraint
+                if constraint_name:
+                    stmt = insert(Table_to_be_loaded).on_conflict_do_nothing( 
+                        constraint=constraint_name 
+                        ) # Handle conflicts based on the unique constraint
+                    session.execute(stmt, chunk)  # Execute the statement within the session
+                else:
+                    session.bulk_insert_mappings(Table_to_be_loaded, chunk)  # Bulk insert without conflict handling    
                 
-            session.execute(stmt)  # Execute the statement within the session
+                session.commit()  # Commit the transaction
+        else:    
+            for row in dataframe_to_upload.to_dict(orient="records"): # Iterate over each row in the DataFrame 
+                stmt = insert(Table_to_be_loaded).values(**row) # Create an insert statement for the row
                 
-            session.commit() # Commit the transaction
+                if constraint_name: # If a unique constraint exists, handle conflicts
+                    stmt = stmt.on_conflict_do_nothing( constraint=constraint_name ) # Do nothing on conflict based on the unique constraint
+                    
+                session.execute(stmt)  # Execute the statement within the session
+                    
+                session.commit() # Commit the transaction
 
 def create_countryregion_table(airline_csv_file_path: str,airport_csv_file_path: str,Table_to_be_loaded: Type[DeclarativeMeta]):
     
@@ -181,9 +201,13 @@ if __name__ == "__main__":
     #     load_df_sql(flight_details_df, Flight_Details)    
     #     print("flight details loaded")
 
-    booking_flights_for_passangers = BookFlightGenerator(engine)
-    booking_flights_for_passangers.load_flight_details_from_db("Flight_Details")
-    booking_flights_for_passangers.load_passengers_from_db("Passanger")
-    booked_flights_df = booking_flights_for_passangers.generate_booked_flights()
-    load_df_sql(booked_flights_df, BookedFlight)
-    print("booked flight details loaded")
+    # booking_flights_for_passangers = BookFlightGenerator(engine)
+    # booking_flights_for_passangers.load_flight_details_from_db("Flight_Details")
+    # booking_flights_for_passangers.load_passengers_from_db("Passanger")
+    # booked_flights_df = booking_flights_for_passangers.generate_booked_flights()
+    # load_df_sql(booked_flights_df, BookedFlight)
+    # print("booked flight details loaded")
+
+    luggage_generator = BookedLuggageGenerator(engine)
+    luggage_df = luggage_generator.generate_booked_luggage()
+    load_df_sql(luggage_df, BookedLuggage, chunk_size=10000)
