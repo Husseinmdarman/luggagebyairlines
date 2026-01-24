@@ -2,7 +2,7 @@
 from sqlalchemy.orm import declarative_base, relationship, DeclarativeMeta
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, UniqueConstraint, CheckConstraint, Time
 from sqlalchemy import Enum as SAEnum
-from typing import Type
+from typing import Type, List
 from pir_type import PIRType
 
 Base = declarative_base()
